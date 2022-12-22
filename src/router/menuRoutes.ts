@@ -1,4 +1,6 @@
-export const menusRoutes = [
+import type { RouteRecordRaw } from "vue-router";
+
+export const menusRoutes: RouteRecordRaw[] = [
   {
     name: "系统总览",
     path: "/main/analysis",

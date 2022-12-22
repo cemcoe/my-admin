@@ -13,7 +13,10 @@ router.beforeEach((to, from, next) => {
   const token = localStorage.getItem("token");
   const isAuthenticated = Boolean(token);
   if (to.path !== "/login" && !isAuthenticated) next({ path: "/login" });
-  else next();
+  else if (to.path == "/main") {
+    // '/' => '/main' => '/main/xxxx'
+    next({ path: menusRoutes[0].path });
+  } else next();
 });
 
 export default router;

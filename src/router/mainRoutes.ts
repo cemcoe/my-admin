@@ -1,4 +1,6 @@
-export const mainRoutes = [
+import type { RouteRecordRaw } from "vue-router";
+
+export const mainRoutes: RouteRecordRaw[] = [
   {
     path: "/",
     redirect: "/main",
@@ -11,5 +13,9 @@ export const mainRoutes = [
     path: "/main",
     name: "main",
     component: () => import("@/views/MainView/MainView.vue"),
+  },
+  {
+    path: "/:patchMatch(.*)",
+    component: () => import("@/views/NotFound/NotFound.vue"),
   },
 ];
