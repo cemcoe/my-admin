@@ -10,7 +10,6 @@ export const mainRoutes = [
   {
     path: "/main",
     name: "main",
-    redirect: "/main/analysis",
     component: () => import("@/views/MainView/MainView.vue"),
   },
 ];
