@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref, computed, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { defineStore } from "pinia";
 import { alchemy } from "@/alchemy";
@@ -12,6 +12,8 @@ export const useMainStore = defineStore("main", () => {
   const total = ref(0);
   const page = ref(1);
   const per_page = ref(10);
+
+  let searchInfo = reactive<any>({});
 
   function pathToFunction(key: string, type = "get") {
     // MVC? // base url get handler
@@ -28,7 +30,16 @@ export const useMainStore = defineStore("main", () => {
     return _o[key as keyof typeof _o][type];
   }
 
-  function fetchTableDataAction(searchInfo = { id: "" }) {
+  function setSearchInfo(info: any) {
+    // 1. set
+    searchInfo = info;
+    // 2. renew pageinfo
+    page.value = 1;
+    // 3. renew fetch
+    fetchTableDataAction();
+  }
+
+  function fetchTableDataAction() {
     // TODO: 不够优雅撒。。。 根据name找对应的函数，有点MVC路由的意思了
     // if (name === "nft") {
     //   nft();
@@ -95,5 +106,6 @@ export const useMainStore = defineStore("main", () => {
     page,
     per_page,
     clearStoreData,
+    setSearchInfo,
   };
 });

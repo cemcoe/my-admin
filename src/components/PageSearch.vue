@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import type { FormInstance } from "element-plus";
+import { useMainStore } from "@/stores/main";
+
+const mainStore = useMainStore();
 
 const formConfig = {
   formItems: [
@@ -23,6 +26,7 @@ const handleSearch = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   await formEl.validate(async (valid, fields) => {
     if (valid) {
+      mainStore.setSearchInfo(form);
       emits("handleSearch", form);
     } else {
       console.log("error submit!", fields);
