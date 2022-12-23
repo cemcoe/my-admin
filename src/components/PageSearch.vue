@@ -5,20 +5,48 @@ import { useMainStore } from "@/stores/main";
 
 const mainStore = useMainStore();
 
-const formConfig = {
+interface IFormItem {
+  [propName: string]: any;
+}
+
+interface IFormConfig {
+  formItems: IFormItem[];
+}
+
+const formConfig: IFormConfig = {
   formItems: [
     {
       label: "ID",
       type: "input",
       vModel: "id",
     },
+    {
+      label: "ID1",
+      type: "input",
+      vModel: "id1",
+    },
   ],
 };
+
 const emits = defineEmits(["handleSearch"]);
 
-const form = reactive({
-  id: "",
-});
+function getFormByFormConfig(formConfig: IFormConfig) {
+  const form: { [propName: string]: any } = {};
+
+  formConfig.formItems.map((item) => {
+    // TODO: give initValue
+    const model = item.vModel;
+    form[model] = "";
+  });
+
+  return form;
+}
+
+// const form = reactive({
+//   id: "",
+// });
+
+const form = reactive(getFormByFormConfig(formConfig));
 
 const ruleFormRef = ref<FormInstance>();
 

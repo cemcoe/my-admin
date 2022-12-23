@@ -1,4 +1,4 @@
-import { ref, computed, reactive } from "vue";
+import { ref, computed, reactive, toRaw } from "vue";
 import { useRoute } from "vue-router";
 import { defineStore } from "pinia";
 import { alchemy } from "@/alchemy";
@@ -50,8 +50,8 @@ export const useMainStore = defineStore("main", () => {
     //     "Pinia: Can't find the action name, just check Pinia function"
     //   );
     // }
-    const { id } = searchInfo;
-    if (id) {
+
+    if (Object.keys(toRaw(searchInfo)).length) {
       window.alert(JSON.stringify({ info: "接口还没写", ...searchInfo }));
       // TODO: 接口不支持
       return;
