@@ -3,25 +3,26 @@ import { onBeforeUnmount } from "vue";
 import { utcFormat } from "@/utils/format";
 import { useMainStore } from "@/stores/main";
 
-const props = defineProps<{
+defineProps<{
   pageConfig: {
-    fetchTableDataActionName: string;
     tableConfig: {
       elTableColumns: any[];
     };
   };
 }>();
+
 const emit = defineEmits(["handleEdit"]);
 
 const mainStore = useMainStore();
 
-mainStore.fetchTableDataAction(props.pageConfig.fetchTableDataActionName);
+// leader don't need to know how to get，just ask url
+// template component need easy, reduce params
+// Just to fetch data，how and where or params？
+// I dont know just ask someone, for example url
+mainStore.fetchTableDataAction();
 
 function handleDelete(row: any) {
-  mainStore.deleteTableDataAction(
-    props.pageConfig.fetchTableDataActionName,
-    row
-  );
+  mainStore.deleteTableDataAction(row);
 }
 
 function handleEdit(row: any) {
@@ -30,8 +31,7 @@ function handleEdit(row: any) {
 
 function handleCurrentChange(page: number) {
   mainStore.page = page;
-
-  mainStore.fetchTableDataAction(props.pageConfig.fetchTableDataActionName);
+  mainStore.fetchTableDataAction();
 }
 
 onBeforeUnmount(() => {

@@ -19,7 +19,6 @@ const tableConfig = {
 };
 
 const pageConfig = {
-  fetchTableDataActionName: "nft",
   tableConfig,
 };
 

@@ -1,32 +1,52 @@
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 import { defineStore } from "pinia";
-import { ref } from "vue";
 import { alchemy } from "@/alchemy";
 import { getPostList } from "@/service/modules/post";
 
 export const useMainStore = defineStore("main", () => {
+  const route = useRoute();
+  const path = computed(() => route.path);
+
   const tableData = ref<any>([]);
   const total = ref(0);
   const page = ref(1);
   const per_page = ref(10);
 
-  function fetchTableDataAction(name: string) {
-    // TODO: 不够优雅撒。。。 根据name找对应的函数，有点MVC路由的意思了
-    if (name === "nft") {
-      nft();
-    } else if (name === "post") {
-      post();
-    } else {
-      console.error(
-        "Pinia: Can't find the action name, just check Pinia function"
-      );
-    }
+  function pathToFunction(key: string, type = "get") {
+    // MVC? // base url get handler
+    const _o: { [propName: string]: any } = {
+      "/main/analysis/overview": {
+        get: post,
+      },
+      "/main/analysis/dashboard": {
+        get: nft,
+      },
+    };
+    // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
+
+    return _o[key as keyof typeof _o][type];
   }
 
-  function deleteTableDataAction(name: string, row: any) {
+  function fetchTableDataAction() {
+    // TODO: 不够优雅撒。。。 根据name找对应的函数，有点MVC路由的意思了
+    // if (name === "nft") {
+    //   nft();
+    // } else if (name === "post") {
+    //   post();
+    // } else {
+    //   console.error(
+    //     "Pinia: Can't find the action name, just check Pinia function"
+    //   );
+    // }
+    pathToFunction(path.value)();
+  }
+
+  function deleteTableDataAction(row: any) {
     // TODO: 去执行队列的处理函数
     window.alert(
       JSON.stringify({
-        pageName: name,
+        path: path.value,
         id: row.id,
       })
     );

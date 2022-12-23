@@ -24,7 +24,6 @@ const tableConfig = {
 };
 
 const pageConfig = {
-  fetchTableDataActionName: "post",
   tableConfig,
 };
 
