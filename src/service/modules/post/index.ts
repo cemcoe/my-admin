@@ -3,6 +3,9 @@ import type { IResponse } from "@/types";
 
 interface IPostRes {
   postList: any[];
+  total: number;
+  page: number;
+  per_page: number;
 }
 
 export function getPostList(page = 1, per_page = 10) {

@@ -28,6 +28,12 @@ function handleEdit(row: any) {
   emit("handleEdit", row);
 }
 
+function handleCurrentChange(page: number) {
+  mainStore.page = page;
+
+  mainStore.fetchTableDataAction(props.pageConfig.fetchTableDataActionName);
+}
+
 onBeforeUnmount(() => {
   mainStore.clearStoreData();
 });
@@ -104,6 +110,13 @@ onBeforeUnmount(() => {
         </template></el-table-column
       > -->
   </el-table>
+  <div class="pagination-block">
+    <el-pagination
+      @current-change="handleCurrentChange"
+      layout="prev, pager, next"
+      :total="mainStore.total"
+    />
+  </div>
 </template>
 
 <style scoped>
@@ -121,5 +134,11 @@ onBeforeUnmount(() => {
 .el-table :deep(td.el-table__cell),
 .el-table :deep(th.el-table__cell.is-leaf) {
   border: 0;
+}
+
+.pagination-block {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
 }
 </style>

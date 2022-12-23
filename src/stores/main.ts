@@ -5,6 +5,9 @@ import { getPostList } from "@/service/modules/post";
 
 export const useMainStore = defineStore("main", () => {
   const tableData = ref<any>([]);
+  const total = ref(0);
+  const page = ref(1);
+  const per_page = ref(10);
 
   function fetchTableDataAction(name: string) {
     // TODO: 不够优雅撒。。。 根据name找对应的函数，有点MVC路由的意思了
@@ -41,22 +44,29 @@ export const useMainStore = defineStore("main", () => {
   }
 
   async function post() {
-    const res = await getPostList();
+    const res = await getPostList(page.value, per_page.value);
     const { status, data } = res;
     if (status === 200) {
       tableData.value = data.postList;
+      total.value = data.total;
+      page.value = data.page;
+      per_page.value = data.per_page;
     }
   }
 
   function clearStoreData() {
     // onBeforeUnmount
     tableData.value = [];
+    total.value = 0;
   }
 
   return {
     fetchTableDataAction,
     deleteTableDataAction,
     tableData,
+    total,
+    page,
+    per_page,
     clearStoreData,
   };
 });
