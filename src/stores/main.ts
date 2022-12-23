@@ -28,7 +28,7 @@ export const useMainStore = defineStore("main", () => {
     return _o[key as keyof typeof _o][type];
   }
 
-  function fetchTableDataAction() {
+  function fetchTableDataAction(searchInfo = { id: "" }) {
     // TODO: 不够优雅撒。。。 根据name找对应的函数，有点MVC路由的意思了
     // if (name === "nft") {
     //   nft();
@@ -39,6 +39,13 @@ export const useMainStore = defineStore("main", () => {
     //     "Pinia: Can't find the action name, just check Pinia function"
     //   );
     // }
+    const { id } = searchInfo;
+    if (id) {
+      window.alert(JSON.stringify({ info: "接口还没写", ...searchInfo }));
+      // TODO: 接口不支持
+      return;
+    }
+
     pathToFunction(path.value)();
   }
 
