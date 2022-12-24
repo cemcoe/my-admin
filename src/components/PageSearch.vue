@@ -77,9 +77,7 @@ const handleSearch = async (formEl: FormInstance | undefined) => {
         >
           <el-col :span="16"
             ><el-form-item :label="formItem.label">
-              <el-input
-                v-model="form[formItem.vModel as keyof typeof form]"
-              /> </el-form-item
+              <el-input v-model="form[formItem.vModel]" /> </el-form-item
           ></el-col>
         </template>
       </el-row>
