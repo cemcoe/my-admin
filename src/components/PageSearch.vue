@@ -87,10 +87,17 @@ onBeforeUnmount(() => {
           v-for="formItem in pageConfig.formConfig.formItems"
           :key="formItem.label"
         >
-          <el-col :span="16"
-            ><el-form-item :label="formItem.label">
-              <el-input v-model="form[formItem.vModel]" /> </el-form-item
-          ></el-col>
+          <template v-if="formItem.type === 'input'"
+            ><el-col :span="16"
+              ><el-form-item :label="formItem.label">
+                <el-input
+                  v-model="form[formItem.vModel]"
+                /> </el-form-item></el-col
+          ></template>
+          <template v-else-if="formItem.type === 'custom'"
+            ><el-col :span="16">
+              <slot :name="formItem.slotName"></slot> </el-col
+          ></template>
         </template>
       </el-row>
       <el-row

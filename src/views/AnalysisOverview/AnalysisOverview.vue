@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { pageConfig } from "./config";
+import pageSearch from "@/components/PageSearch.vue";
 import PageContent from "@/components/PageContent.vue";
 
 function handleEdit(row: any) {
@@ -10,17 +11,7 @@ function handleEdit(row: any) {
 
 <template>
   <div class="analysisoverview">
-    <el-row :gutter="12">
-      <el-col :span="8">
-        <el-card shadow="always"> Vue3 </el-card>
-      </el-col>
-      <el-col :span="8">
-        <el-card shadow="always"> Vue-Router </el-card>
-      </el-col>
-      <el-col :span="8">
-        <el-card shadow="always"> Pinia </el-card>
-      </el-col>
-    </el-row>
+    <pageSearch :pageConfig="pageConfig"> </pageSearch>
     <PageContent :pageConfig="pageConfig" @handleEdit="handleEdit">
       <template #title="scope">
         <span class="demo">{{ scope.row.title }}</span>
@@ -30,9 +21,6 @@ function handleEdit(row: any) {
 </template>
 
 <style scoped>
-.analysisoverview {
-}
-
 @keyframes masked-animation {
   0% {
     background-position: 0 0;

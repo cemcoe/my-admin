@@ -23,8 +23,19 @@ const tableConfig = {
   ],
 };
 
+const formConfig = {
+  formItems: [
+    {
+      label: "ID:input",
+      type: "input",
+      vModel: "id",
+    },
+  ],
+};
+
 const pageConfig = {
   tableConfig,
+  formConfig,
 };
 
 export { pageConfig };
