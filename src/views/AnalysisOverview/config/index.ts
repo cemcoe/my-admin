@@ -30,6 +30,11 @@ const formConfig = {
       type: "input",
       vModel: "id",
     },
+    {
+      label: "时间:date-picker",
+      type: "date-picker",
+      vModel: "datess",
+    },
   ],
 };
 

@@ -94,10 +94,15 @@ onBeforeUnmount(() => {
                   v-model="form[formItem.vModel]"
                 /> </el-form-item></el-col
           ></template>
-          <template v-else-if="formItem.type === 'custom'"
-            ><el-col :span="16">
-              <slot :name="formItem.slotName"></slot> </el-col
-          ></template>
+          <template v-if="formItem.type === 'date-picker'">
+            <el-date-picker
+              type="daterange"
+              range-separator="-"
+              start-placeholder="开始时间"
+              end-placeholder="结束时间"
+              v-model="form[formItem.vModel]"
+            />
+          </template>
         </template>
       </el-row>
       <el-row
