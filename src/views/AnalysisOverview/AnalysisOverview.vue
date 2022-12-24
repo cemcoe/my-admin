@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { pageConfig } from "./config";
 import pageSearch from "@/components/PageSearch.vue";
 import PageContent from "@/components/PageContent.vue";
 import PageModal from "@/components/PageModal.vue";
-import { useMainStore } from "@/stores/main";
-const mainStore = useMainStore();
+
+const modalRef = ref<any>();
 
 function handleEdit(row: any) {
   console.log(row);
-
-  mainStore.dialogVisible = true;
+  modalRef.value?.setDialogVisible();
 }
 </script>
 
@@ -21,7 +21,7 @@ function handleEdit(row: any) {
         <span class="demo">{{ scope.row.title }}</span>
       </template>
     </PageContent>
-    <PageModal></PageModal>
+    <PageModal ref="modalRef" />
   </div>
 </template>
 
