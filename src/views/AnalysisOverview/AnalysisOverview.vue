@@ -2,10 +2,14 @@
 import { pageConfig } from "./config";
 import pageSearch from "@/components/PageSearch.vue";
 import PageContent from "@/components/PageContent.vue";
+import PageModal from "@/components/PageModal.vue";
+import { useMainStore } from "@/stores/main";
+const mainStore = useMainStore();
 
 function handleEdit(row: any) {
   console.log(row);
-  window.alert("已拿到数据");
+
+  mainStore.dialogVisible = true;
 }
 </script>
 
@@ -17,6 +21,7 @@ function handleEdit(row: any) {
         <span class="demo">{{ scope.row.title }}</span>
       </template>
     </PageContent>
+    <PageModal></PageModal>
   </div>
 </template>
 

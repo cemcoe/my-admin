@@ -15,6 +15,8 @@ export const useMainStore = defineStore("main", () => {
 
   let searchInfo = reactive<any>({});
 
+  const dialogVisible = ref(false);
+
   function pathToFunction(key: string, type = "get") {
     // MVC? // base url get handler
     const _o: { [propName: string]: any } = {
@@ -108,5 +110,6 @@ export const useMainStore = defineStore("main", () => {
     per_page,
     clearStoreData,
     setSearchInfo,
+    dialogVisible,
   };
 });
