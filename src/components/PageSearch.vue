@@ -13,20 +13,28 @@ interface IFormConfig {
   formItems: IFormItem[];
 }
 
-const formConfig: IFormConfig = {
-  formItems: [
-    {
-      label: "ID",
-      type: "input",
-      vModel: "id",
-    },
-    {
-      label: "ID1",
-      type: "input",
-      vModel: "id1",
-    },
-  ],
-};
+// const formConfig: IFormConfig = {
+//   formItems: [
+//     {
+//       label: "ID",
+//       type: "input",
+//       vModel: "id",
+//     },
+//     {
+//       label: "ID1",
+//       type: "input",
+//       vModel: "id1",
+//     },
+//   ],
+// };
+
+const props = defineProps<{
+  pageConfig: {
+    formConfig: {
+      formItems: any[];
+    };
+  };
+}>();
 
 const emits = defineEmits(["handleSearch"]);
 
@@ -46,7 +54,7 @@ function getFormByFormConfig(formConfig: IFormConfig) {
 //   id: "",
 // });
 
-const form = reactive(getFormByFormConfig(formConfig));
+const form = reactive(getFormByFormConfig(props.pageConfig.formConfig));
 
 const ruleFormRef = ref<FormInstance>();
 
@@ -76,7 +84,7 @@ onBeforeUnmount(() => {
             <el-input v-model="form.id" /> </el-form-item
         ></el-col> -->
         <template
-          v-for="formItem in formConfig.formItems"
+          v-for="formItem in pageConfig.formConfig.formItems"
           :key="formItem.label"
         >
           <el-col :span="16"

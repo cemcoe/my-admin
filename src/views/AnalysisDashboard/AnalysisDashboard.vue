@@ -13,7 +13,7 @@ function handleEdit(row: any) {
 </script>
 
 <template>
-  <PageSearch></PageSearch>
+  <PageSearch :pageConfig="pageConfig"></PageSearch>
   <PageContent :pageConfig="pageConfig">
     <template #demo="scope">
       <el-button size="small" @click="handleEdit(scope)">Edit</el-button>
