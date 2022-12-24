@@ -96,6 +96,7 @@ export const useMainStore = defineStore("main", () => {
     // onBeforeUnmount
     tableData.value = [];
     total.value = 0;
+    searchInfo = {};
   }
 
   return {

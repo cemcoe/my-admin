@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive, ref, onBeforeUnmount } from "vue";
 import type { FormInstance } from "element-plus";
 import { useMainStore } from "@/stores/main";
 
@@ -61,6 +61,10 @@ const handleSearch = async (formEl: FormInstance | undefined) => {
     }
   });
 };
+
+onBeforeUnmount(() => {
+  mainStore.clearStoreData();
+});
 </script>
 
 <template>
