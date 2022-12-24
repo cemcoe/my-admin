@@ -38,9 +38,35 @@ const formConfig = {
   ],
 };
 
+const modalConfig = {
+  formItems: [
+    {
+      label: "id",
+      type: "input",
+      vModel: "id",
+    },
+    {
+      label: "省份二",
+      type: "select",
+      vModel: "region",
+      options: [
+        {
+          label: "Zone No.1",
+          value: "shanghai",
+        },
+        {
+          label: "Zone No.2",
+          value: "beijing",
+        },
+      ],
+    },
+  ],
+};
+
 const pageConfig = {
   tableConfig,
   formConfig,
+  modalConfig,
 };
 
 export { pageConfig };

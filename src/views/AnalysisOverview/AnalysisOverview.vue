@@ -21,7 +21,7 @@ function handleEdit(row: any) {
         <span class="demo">{{ scope.row.title }}</span>
       </template>
     </PageContent>
-    <PageModal ref="modalRef" />
+    <PageModal :pageConfig="pageConfig" ref="modalRef" />
   </div>
 </template>
 
