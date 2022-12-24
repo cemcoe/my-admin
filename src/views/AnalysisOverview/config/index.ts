@@ -46,6 +46,12 @@ const modalConfig = {
       vModel: "id",
     },
     {
+      label: "标题",
+      type: "input",
+      vModel: "title",
+    },
+
+    {
       label: "省份二",
       type: "select",
       vModel: "region",

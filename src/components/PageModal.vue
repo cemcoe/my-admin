@@ -30,8 +30,6 @@ const handleClose = (done: () => void) => {
     });
 };
 
-const setDialogVisible = () => (dialogVisible.value = true);
-
 // const formConfig: IFormConfig =
 // };
 
@@ -57,6 +55,18 @@ function handleConfirm() {
   dialogVisible.value = false;
   console.log(form);
 }
+
+const setDialogVisible = (isNew: boolean = true, data: any = {}) => {
+  dialogVisible.value = true;
+  for (const key in form) {
+    if (isNew) {
+      form[key] = "";
+    } else {
+      form[key] = data[key];
+    }
+  }
+};
+
 defineExpose({
   setDialogVisible,
 });

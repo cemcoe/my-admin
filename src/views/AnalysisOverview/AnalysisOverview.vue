@@ -9,7 +9,7 @@ const modalRef = ref<any>();
 
 function handleEdit(row: any) {
   console.log(row);
-  modalRef.value?.setDialogVisible();
+  modalRef.value?.setDialogVisible(false, row);
 }
 </script>
 
