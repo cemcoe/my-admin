@@ -4,10 +4,8 @@ import { utcFormat } from "@/utils/format";
 import { useMainStore } from "@/stores/main";
 
 defineProps<{
-  pageConfig: {
-    tableConfig: {
-      elTableColumns: any[];
-    };
+  tableConfig: {
+    elTableColumns: any[];
   };
 }>();
 
@@ -41,7 +39,7 @@ onBeforeUnmount(() => {
 
 <template>
   <el-table :data="mainStore.tableData" style="width: 100%">
-    <template v-for="col in pageConfig.tableConfig.elTableColumns" :key="col">
+    <template v-for="col in tableConfig.elTableColumns" :key="col">
       <template v-if="col.type === 'normal'">
         <el-table-column v-bind="col"
       /></template>

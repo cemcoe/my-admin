@@ -23,7 +23,7 @@ const tableConfig = {
   ],
 };
 
-const formConfig = {
+const searchConfig = {
   formItems: [
     {
       label: "ID:input",
@@ -71,7 +71,7 @@ const modalConfig = {
 
 const pageConfig = {
   tableConfig,
-  formConfig,
+  searchConfig,
   modalConfig,
 };
 

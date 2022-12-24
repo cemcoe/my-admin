@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { pageConfig } from "./config";
 import pageSearch from "@/components/PageSearch.vue";
-import PageContent from "@/components/PageContent.vue";
+import PageTable from "@/components/PageTable.vue";
 import PageModal from "@/components/PageModal.vue";
 
 const modalRef = ref<any>();
@@ -15,12 +15,12 @@ function handleEdit(row: any) {
 
 <template>
   <div class="analysisoverview">
-    <pageSearch :pageConfig="pageConfig"> </pageSearch>
-    <PageContent :pageConfig="pageConfig" @handleEdit="handleEdit">
+    <pageSearch :searchConfig="pageConfig.searchConfig"> </pageSearch>
+    <PageTable :tableConfig="pageConfig.tableConfig" @handleEdit="handleEdit">
       <template #title="scope">
         <span class="demo">{{ scope.row.title }}</span>
       </template>
-    </PageContent>
+    </PageTable>
     <PageModal :pageConfig="pageConfig" ref="modalRef" />
   </div>
 </template>

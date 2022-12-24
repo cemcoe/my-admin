@@ -18,7 +18,7 @@ const tableConfig = {
   ],
 };
 
-const formConfig = {
+const searchConfig = {
   formItems: [
     {
       label: "ID",
@@ -35,7 +35,7 @@ const formConfig = {
 
 const pageConfig = {
   tableConfig,
-  formConfig,
+  searchConfig,
 };
 
 export { pageConfig };

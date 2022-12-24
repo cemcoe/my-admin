@@ -29,10 +29,8 @@ interface IFormConfig {
 // };
 
 const props = defineProps<{
-  pageConfig: {
-    formConfig: {
-      formItems: any[];
-    };
+  searchConfig: {
+    formItems: any[];
   };
 }>();
 
@@ -54,7 +52,7 @@ function getFormByFormConfig(formConfig: IFormConfig) {
 //   id: "",
 // });
 
-const form = reactive(getFormByFormConfig(props.pageConfig.formConfig));
+const form = reactive(getFormByFormConfig(props.searchConfig));
 
 const ruleFormRef = ref<FormInstance>();
 
@@ -84,7 +82,7 @@ onBeforeUnmount(() => {
             <el-input v-model="form.id" /> </el-form-item
         ></el-col> -->
         <template
-          v-for="formItem in pageConfig.formConfig.formItems"
+          v-for="formItem in searchConfig.formItems"
           :key="formItem.label"
         >
           <template v-if="formItem.type === 'input'"
