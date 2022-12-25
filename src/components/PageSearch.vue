@@ -93,16 +93,20 @@ onBeforeUnmount(() => {
                 /> </el-form-item></el-col
           ></template>
           <template v-if="formItem.type === 'date-picker'">
-            <el-date-picker
-              type="daterange"
-              range-separator="-"
-              start-placeholder="开始时间"
-              end-placeholder="结束时间"
-              v-model="form[formItem.vModel]"
-            />
+            <el-col :span="16">
+              <span>{{ formItem.label }}</span>
+              <el-date-picker
+                type="daterange"
+                range-separator="-"
+                start-placeholder="开始时间"
+                end-placeholder="结束时间"
+                v-model="form[formItem.vModel]"
+              />
+            </el-col>
           </template>
         </template>
       </el-row>
+
       <el-row
         ><el-button @click="handleSearch(ruleFormRef)">
           搜索
