@@ -5,12 +5,12 @@ Vue3-Pinia-ElementPlus-ts-admin-template
 - [x] custom table
 - [x] fetch function && Pinia action
 - [x] date format
-- [x] router file to menu
+- [x] router file to recursion menu
 - [x] router.beforeEach
 - [x] config file to Table
 - [x] Env Variables and Modes
-- [ ] config file to Pagination
-- [ ] config file to Search
-- [ ] config file to Form
+- [x] config file to Pagination
+- [x] config file to Search
+- [x] config file to Form
 - [ ] Echart
 - [ ] cli
