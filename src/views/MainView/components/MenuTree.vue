@@ -14,7 +14,10 @@ defineProps<{
 </script>
 
 <template>
-  <el-menu :default-active="defaultActive">
+  <el-menu
+    :default-active="defaultActive"
+    :default-openeds="['/main/analysis']"
+  >
     <template v-for="item in menusRoutes" :key="item.path">
       <el-menu-item
         v-if="!item.children"
