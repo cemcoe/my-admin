@@ -24,6 +24,12 @@ export const useMainStore = defineStore("main", () => {
         read: readPost,
         delete: deletePost,
       },
+      "/main/template/page": {
+        // create,
+        update: updatePost,
+        read: readPost,
+        delete: deletePost,
+      },
     };
     // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
 

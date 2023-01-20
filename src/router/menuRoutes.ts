@@ -14,9 +14,22 @@ export const menusRoutes: RouteRecordRaw[] = [
       },
       {
         path: "/main/analysis/dashboard",
-        name: "商品统计",
+        name: "数据统计",
         component: () =>
           import("@/views/AnalysisDashboard/AnalysisDashboard.vue"),
+      },
+    ],
+  },
+  {
+    name: "模板展示",
+    path: "/main/template",
+    redirect: "/main/template/page",
+    children: [
+      {
+        path: "/main/template/page",
+        name: "页面级别模板",
+        component: () =>
+          import("@/views/TemplateDemo/PostManage/PostManage.vue"),
       },
     ],
   },
