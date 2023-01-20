@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
 import { ElMessageBox } from "element-plus";
+import { useMainStore } from "@/stores/main";
+const mainStore = useMainStore();
 
 interface IFormItem {
   [propName: string]: any;
@@ -53,7 +55,7 @@ const form = reactive(getFormByFormConfig(props.pageConfig.modalConfig));
 
 function handleConfirm() {
   dialogVisible.value = false;
-  console.log(form);
+  mainStore.updateTableDataAction(form);
 }
 
 const setDialogVisible = (isNew: boolean = true, data: any = {}) => {

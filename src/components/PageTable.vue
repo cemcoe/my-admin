@@ -17,7 +17,7 @@ const mainStore = useMainStore();
 // template component need easy, reduce params
 // Just to fetch data，how and where or params？
 // I dont know just ask someone, for example url
-mainStore.fetchTableDataAction();
+mainStore.readTableDataAction();
 
 function handleDelete(row: any) {
   mainStore.deleteTableDataAction(row);
@@ -29,7 +29,7 @@ function handleEdit(row: any) {
 
 function handleCurrentChange(page: number) {
   mainStore.page = page;
-  mainStore.fetchTableDataAction();
+  mainStore.readTableDataAction();
 }
 
 onBeforeUnmount(() => {

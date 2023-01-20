@@ -21,7 +21,7 @@ export const useMainStore = defineStore("main", () => {
     const _o: { [propName: string]: any } = {
       "/main/analysis/overview": {
         // create,
-        // update,
+        update: updatePost,
         read: readPost,
         delete: deletePost,
       },
@@ -43,10 +43,10 @@ export const useMainStore = defineStore("main", () => {
     // 2. renew pageinfo
     page.value = 1;
     // 3. renew fetch
-    fetchTableDataAction();
+    readTableDataAction();
   }
 
-  function fetchTableDataAction() {
+  function readTableDataAction() {
     // TODO: 不够优雅撒。。。 根据name找对应的函数，有点MVC路由的意思了
     // if (name === "nft") {
     //   nft();
@@ -65,6 +65,18 @@ export const useMainStore = defineStore("main", () => {
     }
 
     pathToFunction(path.value)();
+  }
+
+  function updateTableDataAction(row: any) {
+    // TODO: 去执行队列的处理函数
+    // window.alert(
+    //   JSON.stringify({
+    //     path: path.value,
+    //     id: row.id,
+    //   })
+    // );
+
+    pathToFunction(path.value, "update")(row);
   }
 
   function deleteTableDataAction(row: any) {
@@ -88,6 +100,11 @@ export const useMainStore = defineStore("main", () => {
         console.log(res);
         tableData.value = res.ownedNfts;
       });
+  }
+
+  async function updatePost(row: any) {
+    // 更新的具体逻辑
+    console.log(row, "TODO:::更新的具体逻辑");
   }
 
   async function readPost() {
@@ -119,7 +136,8 @@ export const useMainStore = defineStore("main", () => {
     page,
     per_page,
     tableData,
-    fetchTableDataAction,
+    readTableDataAction,
+    updateTableDataAction,
     deleteTableDataAction,
     clearStoreData,
     setSearchInfo,
