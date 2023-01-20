@@ -1,7 +1,6 @@
 import { ref, computed, reactive, toRaw } from "vue";
 import { useRoute } from "vue-router";
 import { defineStore } from "pinia";
-import { alchemy } from "@/alchemy";
 import { getPostList } from "@/service/modules/post";
 
 export const useMainStore = defineStore("main", () => {
@@ -24,12 +23,6 @@ export const useMainStore = defineStore("main", () => {
         update: updatePost,
         read: readPost,
         delete: deletePost,
-      },
-      "/main/analysis/dashboard": {
-        // create,
-        // update,
-        read: nft,
-        // delete,
       },
     };
     // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
@@ -89,17 +82,6 @@ export const useMainStore = defineStore("main", () => {
     // );
 
     pathToFunction(path.value, "delete")(row);
-  }
-
-  function nft() {
-    alchemy.nft
-      .getNftsForOwner("0x2cEE06a96eB2f6fFEc80ad27Df274E0D196BFAB2", {
-        pageSize: 10,
-      })
-      .then((res) => {
-        console.log(res);
-        tableData.value = res.ownedNfts;
-      });
   }
 
   async function updatePost(row: any) {

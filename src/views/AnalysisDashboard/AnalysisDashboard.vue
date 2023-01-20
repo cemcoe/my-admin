@@ -1,27 +1,43 @@
 <script setup lang="ts">
-import { pageConfig } from "./config";
-import PageSearch from "@/components/PageSearch.vue";
-import PageTable from "@/components/PageTable.vue";
+import * as echarts from "echarts";
+import { onMounted } from "vue";
 
-function handleDelete(row: any) {
-  console.log(row);
-}
+// 基于准备好的dom，初始化echarts实例
+onMounted(() => {
+  const myChart = echarts.init(
+    document.getElementById("myChart") as HTMLElement
+  );
 
-function handleEdit(row: any) {
-  console.log(row);
-}
+  console.log(myChart);
+
+  // 绘制图表
+  myChart.setOption({
+    title: {
+      text: "ECharts 入门示例",
+    },
+    tooltip: {},
+    xAxis: {
+      data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+    },
+    yAxis: {},
+    series: [
+      {
+        name: "销量",
+        type: "bar",
+        data: [5, 20, 36, 10, 10, 20],
+      },
+    ],
+  });
+});
 </script>
 
 <template>
-  <PageSearch :searchConfig="pageConfig.searchConfig"></PageSearch>
-  <PageTable :tableConfig="pageConfig.tableConfig">
-    <template #demo="scope">
-      <el-button size="small" @click="handleEdit(scope)">Edit</el-button>
-      <el-button size="small" type="danger" @click="handleDelete(scope)"
-        >Delete</el-button
-      >
-    </template>
-  </PageTable>
+  <div id="myChart"></div>
 </template>
 
-<style scoped></style>
+<style scoped>
+#myChart {
+  width: 400px;
+  height: 200px;
+}
+</style>
