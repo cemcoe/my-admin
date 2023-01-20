@@ -16,13 +16,14 @@ export const useMainStore = defineStore("main", () => {
   let searchInfo = reactive<any>({});
 
   function pathToFunction(key: string, type = "read") {
+    // console.log(key, type);
     // MVC? // base url get handler
     const _o: { [propName: string]: any } = {
       "/main/analysis/overview": {
         // create,
         // update,
-        read: post,
-        // delete,
+        read: readPost,
+        delete: deletePost,
       },
       "/main/analysis/dashboard": {
         // create,
@@ -68,12 +69,14 @@ export const useMainStore = defineStore("main", () => {
 
   function deleteTableDataAction(row: any) {
     // TODO: 去执行队列的处理函数
-    window.alert(
-      JSON.stringify({
-        path: path.value,
-        id: row.id,
-      })
-    );
+    // window.alert(
+    //   JSON.stringify({
+    //     path: path.value,
+    //     id: row.id,
+    //   })
+    // );
+
+    pathToFunction(path.value, "delete")(row);
   }
 
   function nft() {
@@ -87,7 +90,7 @@ export const useMainStore = defineStore("main", () => {
       });
   }
 
-  async function post() {
+  async function readPost() {
     const res = await getPostList(page.value, per_page.value);
     const { status, data } = res;
     if (status === 200) {
@@ -96,6 +99,11 @@ export const useMainStore = defineStore("main", () => {
       page.value = data.page;
       per_page.value = data.per_page;
     }
+  }
+
+  async function deletePost(row: any) {
+    // 删除的具体逻辑
+    console.log(row, "TODO:::删除的具体逻辑");
   }
 
   function clearStoreData() {
@@ -107,12 +115,12 @@ export const useMainStore = defineStore("main", () => {
   }
 
   return {
-    fetchTableDataAction,
-    deleteTableDataAction,
-    tableData,
     total,
     page,
     per_page,
+    tableData,
+    fetchTableDataAction,
+    deleteTableDataAction,
     clearStoreData,
     setSearchInfo,
   };
