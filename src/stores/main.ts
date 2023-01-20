@@ -15,14 +15,20 @@ export const useMainStore = defineStore("main", () => {
 
   let searchInfo = reactive<any>({});
 
-  function pathToFunction(key: string, type = "get") {
+  function pathToFunction(key: string, type = "read") {
     // MVC? // base url get handler
     const _o: { [propName: string]: any } = {
       "/main/analysis/overview": {
-        get: post,
+        // create,
+        // update,
+        read: post,
+        // delete,
       },
       "/main/analysis/dashboard": {
-        get: nft,
+        // create,
+        // update,
+        read: nft,
+        // delete,
       },
     };
     // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
@@ -96,6 +102,7 @@ export const useMainStore = defineStore("main", () => {
     // onBeforeUnmount
     tableData.value = [];
     total.value = 0;
+    page.value = 0;
     searchInfo = {};
   }
 
