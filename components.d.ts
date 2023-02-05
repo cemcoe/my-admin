@@ -34,6 +34,7 @@ declare module '@vue/runtime-core' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    GanttComponent: typeof import('./src/components/GanttComponent.vue')['default']
     PageContent: typeof import('./src/components/PageContent.vue')['default']
     PageModal: typeof import('./src/components/PageModal.vue')['default']
     PageSearch: typeof import('./src/components/PageSearch.vue')['default']
