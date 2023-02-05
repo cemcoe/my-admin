@@ -12,7 +12,10 @@ export const useLoginStore = defineStore("login", () => {
       const { token, user } = data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-      router.replace("/");
+      const toPath = localStorage.getItem("toPath")
+        ? localStorage.getItem("toPath")
+        : "/";
+      router.replace(toPath as string);
     } else {
       console.error("request fail");
     }

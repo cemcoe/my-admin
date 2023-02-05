@@ -12,8 +12,11 @@ menusRoutes.map((route) => router.addRoute("main", route));
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem("token");
   const isAuthenticated = Boolean(token);
-  if (to.path !== "/login" && !isAuthenticated) next({ path: "/login" });
-  else if (to.path == "/main") {
+  if (to.path !== "/login" && !isAuthenticated) {
+    // 记录一下地址，登录成功返回
+    localStorage.setItem("toPath", to.path);
+    next({ path: "/login" });
+  } else if (to.path == "/main") {
     // '/' => '/main' => '/main/xxxx'
     next({ path: menusRoutes[0].path });
   } else next();
