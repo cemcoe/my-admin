@@ -10,17 +10,19 @@ const tasks = {
   data: [
     {
       id: 1,
-      text: "Task #1",
+      text: "测试任务",
       start_date: "2020-01-17",
       duration: 3,
       progress: 0.6,
+      admin: "高先生",
     },
     {
       id: 2,
       text: "Task #2",
       start_date: "2020-01-20",
       duration: 3,
-      progress: 0.4,
+      progress: 0,
+      admin: "李先生",
     },
   ],
   links: [{ id: 1, source: 1, target: 2, type: "0" }],
