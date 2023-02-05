@@ -34,6 +34,11 @@ export const menusRoutes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: "/gantt",
+    name: "甘特图",
+    component: () => import("../views/GanttView/GanttView.vue"),
+  },
+  {
     path: "/about",
     name: "关于",
     component: () => import("../views/AboutView.vue"),
