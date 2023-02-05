@@ -1,26 +1,27 @@
 <template>
-  <div ref="ganttContainer"></div>
+  <div ref="ganttContainer" id="demo"></div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { gantt } from "dhtmlx-gantt";
-export default {
-  props: {
-    tasks: {
-      type: Object,
-      default() {
-        return { data: [], links: [] };
-      },
+const props = defineProps({
+  tasks: {
+    type: Object,
+    default() {
+      return { data: [], links: [] };
     },
   },
+});
 
-  mounted: function () {
-    gantt.config.date_format = "%Y-%m-%d";
+const ganttContainer = ref<HTMLElement | null>(null);
 
-    gantt.init(this.$refs.ganttContainer);
-    gantt.parse(this.$props.tasks);
-  },
-};
+onMounted(() => {
+  gantt.config.date_format = "%Y-%m-%d";
+
+  gantt.init(ganttContainer.value as HTMLElement);
+  gantt.parse(props.tasks);
+});
 </script>
 
 <style>
