@@ -16,6 +16,16 @@ const props = defineProps({
 
 const ganttContainer = ref<HTMLElement | null>(null);
 
+function getStatusText(progress: number) {
+  if (progress > 0 && progress < 1) {
+    return "进行中";
+  } else if (progress === 1) {
+    return "已完成";
+  } else {
+    return "未开始";
+  }
+}
+
 const statusHTML = (progress: any) => {
   return `<div 
     style="
@@ -26,7 +36,7 @@ const statusHTML = (progress: any) => {
         padding: 4px 6px;
         border-radius: 10px;
         color: #fff;
-    ">${progress > 0 ? "进行中" : "未开始"}<span>
+    ">${getStatusText(progress)}<span>
   
   </div>`;
 };
@@ -59,11 +69,26 @@ onMounted(() => {
 
   gantt.plugins({
     tooltip: true,
+    marker: true,
   });
 
   gantt.templates.task_class = function (start, end, task) {
     return `milestone-${task.state}`;
   };
+  var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
+
+  const todayMarker = gantt.addMarker({
+    start_date: new Date(),
+    css: "today",
+    text: "今天",
+    title: dateToStr(new Date()),
+  });
+  setInterval(function () {
+    var today = gantt.getMarker(todayMarker);
+    today.start_date = new Date();
+    today.title = dateToStr(new Date());
+    gantt.updateMarker(todayMarker);
+  }, 1000 * 60);
 
   gantt.init(ganttContainer.value as HTMLElement);
   gantt.parse(props.tasks);
