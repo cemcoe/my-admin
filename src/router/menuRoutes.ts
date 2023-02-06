@@ -39,6 +39,11 @@ export const menusRoutes: RouteRecordRaw[] = [
     component: () => import("../views/GanttView/GanttView.vue"),
   },
   {
+    path: "/kanban",
+    name: "看板",
+    component: () => import("../views/KanBan/KanBan.vue"),
+  },
+  {
     path: "/about",
     name: "关于",
     component: () => import("../views/AboutView.vue"),
