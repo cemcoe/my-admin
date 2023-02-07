@@ -10,11 +10,18 @@ const circleUrl =
 
 <template>
   <div class="header">
-    <el-breadcrumb>
-      <el-breadcrumb-item v-for="r in route.matched.slice(1)" :key="r.path">{{
-        r.name
-      }}</el-breadcrumb-item>
-    </el-breadcrumb>
+    <div class="header-left">
+      <div>
+        <el-icon :size="24"><Fold /></el-icon>
+      </div>
+
+      <el-breadcrumb>
+        <el-breadcrumb-item v-for="r in route.matched.slice(1)" :key="r.path">
+          {{ r.name }}
+        </el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
+
     <el-dropdown>
       <div class="avatar-container">
         <el-avatar :size="40" :src="circleUrl" />
@@ -40,6 +47,16 @@ const circleUrl =
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.el-breadcrumb {
+  margin-left: 30px;
+  display: flex;
 }
 
 .avatar-container {
