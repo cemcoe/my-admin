@@ -15,7 +15,7 @@ export const menusRoutes: RouteRecordRaw[] = [
         component: () =>
           import("@/views/AnalysisOverview/AnalysisOverview.vue"),
         meta: {
-          icon: "Edit",
+          icon: "Aim",
         },
       },
       {
@@ -34,16 +34,16 @@ export const menusRoutes: RouteRecordRaw[] = [
     path: "/main/template",
     redirect: "/main/template/page",
     meta: {
-      icon: "Edit",
+      icon: "Grid",
     },
     children: [
       {
         path: "/main/template/page",
-        name: "页面级别模板",
+        name: "页面模板",
         component: () =>
           import("@/views/TemplateDemo/PostManage/PostManage.vue"),
         meta: {
-          icon: "Edit",
+          icon: "CoffeeCup",
         },
       },
     ],
@@ -53,7 +53,7 @@ export const menusRoutes: RouteRecordRaw[] = [
     name: "甘特图",
     component: () => import("../views/GanttView/GanttView.vue"),
     meta: {
-      icon: "Edit",
+      icon: "Calendar",
     },
   },
   {
@@ -61,7 +61,7 @@ export const menusRoutes: RouteRecordRaw[] = [
     name: "看板",
     component: () => import("../views/KanBan/KanBan.vue"),
     meta: {
-      icon: "Edit",
+      icon: "Monitor",
     },
   },
   {
@@ -69,7 +69,7 @@ export const menusRoutes: RouteRecordRaw[] = [
     name: "关于",
     component: () => import("../views/AboutView.vue"),
     meta: {
-      icon: "Edit",
+      icon: "Pear",
     },
   },
 ];
