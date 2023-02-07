@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { gantt } from "dhtmlx-gantt";
-import "dhtmlx-gantt/codebase/skins/dhtmlxgantt_material.css";
+
 import { customLightbox } from "./useLightbox";
 
 const props = defineProps({
@@ -158,7 +158,7 @@ onMounted(() => {
 </script>
 
 <style>
-@import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
+@import "dhtmlx-gantt/codebase/skins/dhtmlxgantt_material.css";
 
 .container .gantt_task_line {
   border: none;
