@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { gantt } from "dhtmlx-gantt";
+import "dhtmlx-gantt/codebase/skins/dhtmlxgantt_material.css";
 import { customLightbox } from "./useLightbox";
 
 const props = defineProps({
