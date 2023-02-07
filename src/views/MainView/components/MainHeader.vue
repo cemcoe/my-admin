@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { useLoginStore } from "@/stores/login";
+import { changeMenuCollapseStatus } from "./useMenu";
 const route = useRoute();
 
 const loginStore = useLoginStore();
@@ -11,7 +12,7 @@ const circleUrl =
 <template>
   <div class="header">
     <div class="header-left">
-      <div>
+      <div @click="changeMenuCollapseStatus">
         <el-icon :size="24"><Fold /></el-icon>
       </div>
 

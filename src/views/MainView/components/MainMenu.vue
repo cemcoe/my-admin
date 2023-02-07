@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { menusRoutes } from "@/router/menuRoutes";
 import MenuTree from "./MenuTree.vue";
+import { isCollapse } from "./useMenu";
 
-const isCollapse = ref(false);
 const route = useRoute();
 
 const defaultActive = computed(() => {
