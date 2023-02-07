@@ -1,4 +1,5 @@
 <template>
+  <el-button @click="handleFullScreen">全屏</el-button>
   <div class="container" ref="ganttContainer" id="demo"></div>
 </template>
 
@@ -43,6 +44,10 @@ const statusHTML = (progress: any) => {
 
   </div>`;
 };
+
+function handleFullScreen() {
+  gantt.expand();
+}
 onMounted(() => {
   gantt.config.date_format = "%Y-%m-%d";
   // gantt.config.subscales = [{ unit: "day", step: 1, date: "%j" }];
@@ -98,6 +103,7 @@ onMounted(() => {
   gantt.plugins({
     tooltip: true,
     marker: true,
+    fullscreen: true,
   });
 
   gantt.templates.task_class = function (start, end, task) {
