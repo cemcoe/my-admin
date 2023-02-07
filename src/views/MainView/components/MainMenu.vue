@@ -1,11 +1,26 @@
 <script setup lang="ts">
+import { computed, ref } from "vue";
+import { useRoute } from "vue-router";
 import { menusRoutes } from "@/router/menuRoutes";
 import MenuTree from "./MenuTree.vue";
+
+const isCollapse = ref(false);
+const route = useRoute();
+
+const defaultActive = computed(() => {
+  return route.path;
+});
 </script>
 
 <template>
   <div class="logo">logo</div>
-  <MenuTree :menusRoutes="menusRoutes"></MenuTree>
+  <el-menu
+    :default-active="defaultActive"
+    :default-openeds="['/main/analysis']"
+    :collapse="isCollapse"
+  >
+    <MenuTree :menusRoutes="menusRoutes"></MenuTree>
+  </el-menu>
 </template>
 
 <style scoped>

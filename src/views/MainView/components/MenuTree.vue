@@ -1,50 +1,37 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRoute } from "vue-router";
-
-const route = useRoute();
-
-const defaultActive = computed(() => {
-  return route.path;
-});
-
 defineProps<{
   menusRoutes: any;
 }>();
 </script>
 
 <template>
-  <el-menu
-    :default-active="defaultActive"
-    :default-openeds="['/main/analysis']"
-  >
-    <template v-for="item in menusRoutes" :key="item.path">
-      <el-menu-item
-        v-if="!item.children"
-        :index="item.path"
-        @click="$router.push(item.path)"
-      >
-        <el-icon>
-          <component :is="item.meta.icon"></component>
-        </el-icon>
-        <span>{{ item.name }}</span>
-      </el-menu-item>
+  <template v-for="item in menusRoutes" :key="item.path">
+    <el-menu-item
+      v-if="!item.children"
+      :index="item.path"
+      @click="$router.push(item.path)"
+    >
+      <el-icon>
+        <component :is="item.meta.icon"></component>
+      </el-icon>
+      <template #title>{{ item.name }}</template>
+    </el-menu-item>
 
-      <template v-if="item.children">
-        <el-sub-menu :index="item.path">
-          <template #title>
-            <el-icon>
-              <component :is="item.meta.icon"></component>
-            </el-icon>
-            <span>{{ item.name }}</span>
-          </template>
-          <MenuTree
-            :menusRoutes="item.children"
-            style="margin-left: 10px"
-          ></MenuTree>
-        </el-sub-menu>
-      </template>
-      <!-- <el-sub-menu v-if="item.children" :index="item.path">
+    <template v-if="item.children">
+      <el-sub-menu :index="item.path">
+        <template #title>
+          <el-icon>
+            <component :is="item.meta.icon"></component>
+          </el-icon>
+          <span>{{ item.name }}</span>
+        </template>
+        <MenuTree
+          :menusRoutes="item.children"
+          style="margin-left: 10px"
+        ></MenuTree>
+      </el-sub-menu>
+    </template>
+    <!-- <el-sub-menu v-if="item.children" :index="item.path">
         <template #title>
           <span>{{ item.name }}</span>
         </template>
@@ -62,8 +49,7 @@ defineProps<{
           <span>{{ item.name }}</span>
         </el-menu-item>
       </template> -->
-    </template>
-  </el-menu>
+  </template>
 </template>
 
 <style scoped>
