@@ -5,6 +5,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { gantt } from "dhtmlx-gantt";
+import { customLightbox } from "./useLightbox";
+
 const props = defineProps({
   tasks: {
     type: Object,
@@ -82,7 +84,7 @@ onMounted(() => {
       },
     },
     {
-      name: "text",
+      name: "admin",
       label: "负责人",
       align: "center",
       template: function (obj: any) {
@@ -116,6 +118,8 @@ onMounted(() => {
   }, 1000 * 60);
 
   gantt.config.reorder_grid_columns = true;
+
+  customLightbox(gantt);
 
   gantt.init(ganttContainer.value as HTMLElement);
   gantt.parse(props.tasks);
