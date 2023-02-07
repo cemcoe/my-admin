@@ -24,15 +24,24 @@ defineProps<{
         :index="item.path"
         @click="$router.push(item.path)"
       >
+        <el-icon>
+          <component :is="item.meta.icon"></component>
+        </el-icon>
         <span>{{ item.name }}</span>
       </el-menu-item>
 
       <template v-if="item.children">
         <el-sub-menu :index="item.path">
           <template #title>
+            <el-icon>
+              <component :is="item.meta.icon"></component>
+            </el-icon>
             <span>{{ item.name }}</span>
           </template>
-          <MenuTree :menusRoutes="item.children"></MenuTree>
+          <MenuTree
+            :menusRoutes="item.children"
+            style="margin-left: 10px"
+          ></MenuTree>
         </el-sub-menu>
       </template>
       <!-- <el-sub-menu v-if="item.children" :index="item.path">

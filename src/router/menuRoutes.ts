@@ -5,18 +5,27 @@ export const menusRoutes: RouteRecordRaw[] = [
     name: "系统总览",
     path: "/main/analysis",
     redirect: "/main/analysis/overview",
+    meta: {
+      icon: "Histogram",
+    },
     children: [
       {
         path: "/main/analysis/overview",
         name: "核心技术",
         component: () =>
           import("@/views/AnalysisOverview/AnalysisOverview.vue"),
+        meta: {
+          icon: "Edit",
+        },
       },
       {
         path: "/main/analysis/dashboard",
         name: "数据统计",
         component: () =>
           import("@/views/AnalysisDashboard/AnalysisDashboard.vue"),
+        meta: {
+          icon: "TrendCharts",
+        },
       },
     ],
   },
@@ -24,12 +33,18 @@ export const menusRoutes: RouteRecordRaw[] = [
     name: "模板展示",
     path: "/main/template",
     redirect: "/main/template/page",
+    meta: {
+      icon: "Edit",
+    },
     children: [
       {
         path: "/main/template/page",
         name: "页面级别模板",
         component: () =>
           import("@/views/TemplateDemo/PostManage/PostManage.vue"),
+        meta: {
+          icon: "Edit",
+        },
       },
     ],
   },
@@ -37,15 +52,24 @@ export const menusRoutes: RouteRecordRaw[] = [
     path: "/gantt",
     name: "甘特图",
     component: () => import("../views/GanttView/GanttView.vue"),
+    meta: {
+      icon: "Edit",
+    },
   },
   {
     path: "/kanban",
     name: "看板",
     component: () => import("../views/KanBan/KanBan.vue"),
+    meta: {
+      icon: "Edit",
+    },
   },
   {
     path: "/about",
     name: "关于",
     component: () => import("../views/AboutView.vue"),
+    meta: {
+      icon: "Edit",
+    },
   },
 ];
