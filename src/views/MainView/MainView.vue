@@ -6,7 +6,7 @@ import MainContent from "./components/MainContent.vue";
 
 <template>
   <el-container class="main-view">
-    <el-aside width="160px"><MainMenu /></el-aside>
+    <MainMenu />
     <el-container>
       <el-header><MainHeader /></el-header>
       <el-main><MainContent /></el-main>

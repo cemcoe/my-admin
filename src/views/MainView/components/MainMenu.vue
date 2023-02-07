@@ -13,12 +13,14 @@ const defaultActive = computed(() => {
 </script>
 
 <template>
-  <div class="logo">logo</div>
   <el-menu
     :default-active="defaultActive"
     :default-openeds="['/main/analysis']"
     :collapse="isCollapse"
   >
+    <div class="logo">
+      <span class="demo">logo</span>
+    </div>
     <MenuTree :menusRoutes="menusRoutes"></MenuTree>
   </el-menu>
 </template>
@@ -30,9 +32,22 @@ const defaultActive = computed(() => {
 
 .logo {
   height: 100px;
-  background-color: #ccc;
+  background-color: #e2e1e1;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes masked-animation {
+  0% {
+    color: #e2e1e1;
+  }
+  to {
+    color: #f40;
+  }
+}
+.demo {
+  font-size: 24px;
+  animation: 3s masked-animation infinite;
 }
 </style>
