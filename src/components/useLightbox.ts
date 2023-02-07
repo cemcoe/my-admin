@@ -21,10 +21,20 @@ function customLightbox(gantt: any) {
         { key: "水先生", label: "水先生" },
       ],
     },
+
+    { name: "template", height: 16, type: "template", map_to: "my_template" },
     { name: "time", height: 72, map_to: "auto", type: "duration" },
   ];
 
   gantt.locale.labels.section_priority = "负责人";
+  gantt.locale.labels.section_template = "此处为自定义DOM元素";
+
+  gantt.attachEvent("onBeforeLightbox", function (id: any) {
+    const task = gantt.getTask(id);
+    task.my_template =
+      " 这里可以为所欲为 ===》" + task.text + " - " + task.admin + " 兔年快乐";
+    return true;
+  });
 }
 
 export { customLightbox };
