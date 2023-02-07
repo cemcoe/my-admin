@@ -25,10 +25,7 @@ defineProps<{
           </el-icon>
           <span>{{ item.name }}</span>
         </template>
-        <MenuTree
-          :menusRoutes="item.children"
-          style="margin-left: 10px"
-        ></MenuTree>
+        <MenuTree :menusRoutes="item.children"></MenuTree>
       </el-sub-menu>
     </template>
     <!-- <el-sub-menu v-if="item.children" :index="item.path">
@@ -52,16 +49,4 @@ defineProps<{
   </template>
 </template>
 
-<style scoped>
-.home {
-  background-color: antiquewhite;
-}
-
-.logo {
-  height: 100px;
-  background-color: #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>
+<style scoped></style>
