@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <GanttComponent class="left-container" :tasks="tasks"></GanttComponent>
+    <GanttComponent :tasks="tasks"></GanttComponent>
   </div>
 </template>
 
@@ -54,19 +54,8 @@ const tasks = {
 </script>
 
 <style>
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 .container {
   height: 100vh;
   width: 100%;
-}
-.left-container {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
 }
 </style>
