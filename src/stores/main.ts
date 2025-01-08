@@ -28,7 +28,7 @@ export const useMainStore = defineStore("main", () => {
         // create,
         update: updatePost,
         read: readPost,
-        delete: deletePost,
+        // delete: deletePost,
       },
     };
     // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
@@ -99,10 +99,10 @@ export const useMainStore = defineStore("main", () => {
     const res = await getPostList(page.value, per_page.value);
     const { status, data } = res;
     if (status === 200) {
-      tableData.value = data.postList;
-      total.value = data.total;
-      page.value = data.page;
-      per_page.value = data.per_page;
+      tableData.value = data;
+      total.value = res.pagination.total;
+      page.value = res.pagination.totalPages;
+      per_page.value = res.pagination.pageSize;
     }
   }
 

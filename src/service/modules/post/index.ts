@@ -10,6 +10,6 @@ interface IPostRes {
 
 export function getPostList(page = 1, per_page = 10) {
   return request<IResponse<IPostRes>>(
-    `/posts?page=${page}&per_page=${per_page}`
+    `/users?page=${page}&per_page=${per_page}`
   );
 }

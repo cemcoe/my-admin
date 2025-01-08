@@ -22,8 +22,8 @@ function getConfig() {
     <button @click="getConfig">查看配置文件</button>
     <pageSearch :searchConfig="pageConfig.searchConfig"> </pageSearch>
     <PageTable :tableConfig="pageConfig.tableConfig" @handleEdit="handleEdit">
-      <template #title="scope">
-        <span class="demo">{{ scope.row.title }}</span>
+      <template #status="scope">
+        <span class="demo">{{ scope.row.status === 1 ? '可用' : '封禁' }}</span>
       </template>
     </PageTable>
     <PageModal :pageConfig="pageConfig" ref="modalRef" />
@@ -35,10 +35,12 @@ function getConfig() {
   0% {
     background-position: 0 0;
   }
+
   to {
     background-position: -100% 0;
   }
 }
+
 .demo {
   background: linear-gradient(to right, red, blue);
   -webkit-background-clip: text;

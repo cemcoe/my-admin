@@ -7,14 +7,14 @@ import { useLoginStore } from "@/stores/login";
 const loginStore = useLoginStore();
 
 const loginInfo = reactive({
-  name: "cemcoe",
+  phone: "13526880000",
   password: "test",
 });
 
 const rules = reactive<FormRules>({
-  name: [
-    { required: true, message: "请输入账号", trigger: "blur" },
-    { min: 3, max: 20, message: "账号长度介于3和20之间", trigger: "blur" },
+  phone: [
+    { required: true, message: "请输入手机号", trigger: "blur" },
+    { min: 11, max: 11, message: "账号长度11", trigger: "blur" },
   ],
   password: [
     { required: true, message: "请输入密码", trigger: "blur" },
@@ -52,8 +52,8 @@ const login = async (formEl: FormInstance | undefined) => {
           style="max-width: 460px"
           status-icon
         >
-          <el-form-item label="账号" prop="name">
-            <el-input :prefix-icon="User" v-model="loginInfo.name" />
+          <el-form-item label="账号" prop="phone">
+            <el-input :prefix-icon="User" v-model="loginInfo.phone" />
           </el-form-item>
           <el-form-item label="密码" prop="password">
             <el-input

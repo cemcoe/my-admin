@@ -6,9 +6,24 @@ const tableConfig = {
       prop: "id",
     },
     {
+      type: "normal",
+      label: "ID:normal",
+      prop: "user_id",
+    },
+    {
+      type: "normal",
+      label: "phone:normal",
+      prop: "phone",
+    },
+    {
+      type: "normal",
+      label: "nick:normal",
+      prop: "nick",
+    },
+    {
       type: "custom",
-      label: "标题:custom",
-      slotName: "title",
+      label: "status:custom",
+      slotName: "status",
     },
     {
       type: "day",

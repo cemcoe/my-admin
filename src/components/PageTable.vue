@@ -41,8 +41,7 @@ onBeforeUnmount(() => {
   <el-table :data="mainStore.tableData" style="width: 100%">
     <template v-for="col in tableConfig.elTableColumns" :key="col">
       <template v-if="col.type === 'normal'">
-        <el-table-column v-bind="col"
-      /></template>
+        <el-table-column v-bind="col" /></template>
 
       <template v-else-if="col.type === 'day'">
         <el-table-column v-bind="col">
@@ -55,22 +54,15 @@ onBeforeUnmount(() => {
       <template v-else-if="col.type === 'handler'">
         <el-table-column v-bind="col">
           <template #default="scope">
-            <el-button
-              size="small"
-              type="primary"
-              text
-              bg
-              @click="handleEdit(scope.row)"
-              >编辑</el-button
-            >
-            <el-button
+            <el-button size="small" type="primary" text bg @click="handleEdit(scope.row)">编辑</el-button>
+            <!-- <el-button
               size="small"
               type="danger"
               text
               bg
               @click="handleDelete(scope.row)"
               >删除</el-button
-            >
+            > -->
           </template>
         </el-table-column>
       </template>
@@ -109,11 +101,7 @@ onBeforeUnmount(() => {
       > -->
   </el-table>
   <div class="pagination-block">
-    <el-pagination
-      @current-change="handleCurrentChange"
-      layout="prev, pager, next"
-      :total="mainStore.total"
-    />
+    <el-pagination @current-change="handleCurrentChange" layout="prev, pager, next" :total="mainStore.total" />
   </div>
 </template>
 
