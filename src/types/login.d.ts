@@ -1,4 +1,4 @@
 export interface ILoginInfo {
-  name: string;
+  phone: string;
   password: string;
 }

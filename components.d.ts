@@ -7,7 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -35,9 +34,7 @@ declare module '@vue/runtime-core' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
-    ElTag: typeof import('element-plus/es')['ElTag']
     GanttComponent: typeof import('./src/components/GanttComponent.vue')['default']
-    PageContent: typeof import('./src/components/PageContent.vue')['default']
     PageModal: typeof import('./src/components/PageModal.vue')['default']
     PageSearch: typeof import('./src/components/PageSearch.vue')['default']
     PageTable: typeof import('./src/components/PageTable.vue')['default']
